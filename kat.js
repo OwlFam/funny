@@ -197,8 +197,8 @@ function drawMenu() {
   
   // Menu buttons
   drawButton(width / 2 - 100, 280, 200, 60, 'INTRO', menuState.hoveredButton === 'intro');
-  drawButton(width / 2 - 100, 400, 200, 60, 'PLAY', menuState.hoveredButton === 'play');
-  drawButton(width / 2 - 100, 520, 200, 60, 'GALLERY', menuState.hoveredButton === 'gallery');
+  drawButton(width / 2 - 100, 370, 200, 60, 'PLAY', menuState.hoveredButton === 'play');
+  drawButton(width / 2 - 100, 460, 200, 60, 'GALLERY', menuState.hoveredButton === 'gallery');
   
   // Code input - always visible
   textSize(16);
@@ -996,8 +996,8 @@ function mouseMoved() {
   // Check button hover states
   let buttons = [
     { name: 'intro', x: width / 2 - 100, y: 280, w: 200, h: 60 },
-    { name: 'play', x: width / 2 - 100, y: 400, w: 200, h: 60 },
-    { name: 'gallery', x: width / 2 - 100, y: 520, w: 200, h: 60 },
+    { name: 'play', x: width / 2 - 100, y: 370, w: 200, h: 60 },
+    { name: 'gallery',  x: width / 2 - 100, y: 460, w: 200, h: 60 },
     { name: 'seeCode', x: width / 2 - 100, y: 480, w: 200, h: 60 },
     { name: 'copy', x: width / 2 - 100, y: 420, w: 200, h: 60 },
     { name: 'mainMenu', x: width / 2 - 100, y: 580, w: 200, h: 60 }
