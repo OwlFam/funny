@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kat and Rina's Awesome Adventure</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        #p5-container {
+            display: flex;
+        }
+
+
+    .content {
+        max-width: 500px;
+        margin: auto;
+    }
+
+
+
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.box {
+    width: 400px; 
+    height: 300px; 
+}
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="p5-container"></div>
+    
+    <script>
+        // Global intro variables
+        let introSketch = function(p) {
+            let assets = {};
+            let introState = {
+                dialogueIndex: 0,
+                currentTextIndex: 0,
+                textSpeed: 0.5,
+                rinaY: 0,
+                bounceDirection: 1,
+                hoveredButton: null
+            };
+            
+            const introDialogue = [
+                "Woof! Hey there! I'm Rina, a husky!",
+                "I need your help... You have three evil alter egos wreaking havoc on Big Deal Street!",
+                "You'll have to battle Sora Kat, Confetti Kat, and Bald Kat to save the day!",
+                "Use your skills to damage each boss and defeat them!",
+                "Good luck, Kat! You've got this! Woof woof!"
+            ];
+            
+            p.preload = function() {
+                assets.rina = p.loadImage('assets/rina.jpg');
+            };
+            
+            p.setup = function() {
+                p.createCanvas(1000, 700);
+            };
+            
+            p.draw = function() {
+                // Background
+                p.fill(136, 112, 161);
+                p.rect(0, 0, p.width, p.height);
+                
+                // Rina character
+                if (assets.rina) {
+                    p.image(assets.rina, 180, 120 + introState.rinaY, 280, 280);
+                } else {
+                    p.fill(200, 150, 255);
+                    p.rect(180, 120 + introState.rinaY, 280, 280);
+                }
+                
+                // Dialogue box
+                p.fill(110, 78, 122);
+                p.rect(p.width / 2 + 100, p.height / 2 - 50, 400, 150, 0);
+                
+                // Dialogue text
+                p.fill(0);
+                p.textSize(16);
+                p.textAlign(p.LEFT, p.TOP);
+                
+                if (introState.currentTextIndex < introDialogue[introState.dialogueIndex].length) {
+                    introState.currentTextIndex += introState.textSpeed;
+                }
+                
+                let displayText = introDialogue[introState.dialogueIndex].substring(0, p.floor(introState.currentTextIndex));
+                p.text(displayText, p.width / 2 + 120, p.height / 2 - 30, 360, 120);
+                
+                // Skip button
+                drawButton(p, p.width - 150, p.height - 60, 120, 50, 'Skip', introState.hoveredButton === 'skip');
+                
+                // Next button
+                drawButton(p, p.width - 320, p.height - 60, 150, 50, 'Next >', introState.hoveredButton === 'next');
+                
+                // Bounce animation
+                introState.rinaY += introState.bounceDirection * 2;
+                if (introState.rinaY > 20 || introState.rinaY < 0) {
+                    introState.bounceDirection *= -1;
+                }
+            };
+            
+            p.mouseMoved = function() {
+                // Check if hovering over Skip button
+                if (p.mouseX > p.width - 150 && p.mouseX < p.width - 30 &&
+                    p.mouseY > p.height - 60 && p.mouseY < p.height - 10) {
+                    introState.hoveredButton = 'skip';  
+                } 
+                // Check if hovering over Next button
+                else if (p.mouseX > p.width - 320 && p.mouseX < p.width - 170 &&
+                    p.mouseY > p.height - 60 && p.mouseY < p.height - 10) {
+                    introState.hoveredButton = 'next';
+                }
+                else {
+                    introState.hoveredButton = null;
+                }
+            };
+            
+            p.mousePressed = function() {
+                // Skip button
+                if (p.mouseX > p.width - 150 && p.mouseX < p.width - 30 &&
+                    p.mouseY > p.height - 60 && p.mouseY < p.height - 10) {
+                    window.location.href = 'index.html';
+                }
+                
+                // Next button
+                if (p.mouseX > p.width - 320 && p.mouseX < p.width - 170 &&
+                    p.mouseY > p.height - 60 && p.mouseY < p.height - 10) {
+                    introState.currentTextIndex = 0;
+                    introState.dialogueIndex++;
+                    if (introState.dialogueIndex >= introDialogue.length) {
+                        window.location.href = 'index.html';
+                    }
+                }
+            };
+            
+            function drawButton(p, x, y, w, h, label, isHovered) {
+                let bgColor = isHovered ? p.color(255, 138, 192) : p.color(136, 112, 161);
+                p.fill(bgColor);
+                p.stroke(255, 138, 192);
+                p.strokeWeight(3);
+                p.rect(x, y, w, h, 0);
+                
+                p.fill(255);
+                p.textSize(18);
+                p.textAlign(p.CENTER, p.CENTER);
+                p.textStyle(p.BOLD);
+                p.text(label, x + w / 2, y + h / 2);
+            }
+        };
+        
+        new p5(introSketch, 'p5-container');
+    </script>
+</body>
+</html>
