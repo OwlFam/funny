@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Gallery | Kat and Rina's Awesome Adventure</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			min-height: 100vh;
+			padding: 48px 7vw;
+			background: #2c1b33;
+			color: #ffffff;
+			font-family: Arial, sans-serif;
+		}
+
+		.gallery-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+			margin: 0 auto 36px;
+			max-width: 1200px;
+		}
+
+		h1 {
+			color: #ff8ac0;
+			font-size: clamp(2rem, 5vw, 3.5rem);
+		}
+
+		.back-button {
+			display: inline-block;
+			flex-shrink: 0;
+			padding: 14px 24px;
+			border: 3px solid #ff8ac0;
+			background: #6e4e7a;
+			color: #ffffff;
+			font-size: 1rem;
+			font-weight: bold;
+			text-decoration: none;
+			transition: background 0.2s ease, color 0.2s ease;
+		}
+
+		.back-button:hover,
+		.back-button:focus-visible {
+			background: #ff8ac0;
+			color: #2c1b33;
+		}
+
+		.gallery-scroller {
+			display: flex;
+			gap: 24px;
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 8px 4px 28px;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			scrollbar-color: #ff8ac0 #6e4e7a;
+		}
+
+		.gallery-card {
+			flex: 0 0 min(78vw, 320px);
+			overflow: hidden;
+			border: 3px solid #ff8ac0;
+			background: #6e4e7a;
+			scroll-snap-align: start;
+		}
+
+		.gallery-card img {
+			display: block;
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			border-bottom: 3px solid #ff8ac0;
+			background: #1e0f1e;
+			object-fit: cover;
+		}
+
+		.card-copy {
+			padding: 18px;
+		}
+
+		.card-copy h2 {
+			margin-bottom: 8px;
+			color: #ff8ac0;
+			font-size: 1.35rem;
+		}
+
+		.card-copy p {
+			color: #ffffff;
+			line-height: 1.5;
+		}
+
+		@media (max-width: 600px) {
+			body {
+				padding: 28px 5vw;
+			}
+
+			.gallery-header {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="gallery-header">
+		<h1>Gallery</h1>
+		<a class="back-button" href="index.html">Back to Menu</a>
+	</header>
+
+	<main class="gallery-scroller" aria-label="Image gallery">
+		<article class="gallery-card">
+			<img src="assets/1.png" alt="evil chicken">
+			<div class="card-copy">
+				<h2>evil chicken</h2>
+				<p> 4/25 | maybe the real monster was us all along</p>
+			</div>
+		</article>
+
+		<article class="gallery-card">
+			<img src="assets/2.png" alt="big deal spot">
+			<div class="card-copy">
+				<h2>big deal spot</h2>
+				<p> 4/25 | where everyone uses their emote n stuff (oops i got cut off)</p>
+			</div>
+		</article>
+
+		<article class="gallery-card">
+			<img src="assets/3.png" alt="Kat meets Cats">
+			<div class="card-copy">
+				<h2>Kat meets Cats</h2>
+				<p> 6/5 | tiny little cats in evade</p>
+			</div>
+		</article>
+
+		<article class="gallery-card">
+			<img src="assets/4.png" alt="amazing view">
+			<div class="card-copy">
+				<h2>a breathtaking vista</h2>
+				<p> 8/31 | the orphan game was really funny</p>
+			</div>
+		</article>
+
+		<article class="gallery-card">
+			<img src="assets/5.png" alt="Kat on the toilet">
+			<div class="card-copy"><h2>Kat on the toilet</h2><p> 8/15 | Kat on the toilet</p></div>
+		</article>
+
+<article class="gallery-card">
+			<img src="assets/5.5.png" alt="big deal spot 2">
+			<div class="card-copy">
+				<h2>big deal spot 2 </h2>
+				<p> 4/25 | the match started too quick</p>
+			</div>
+		</article>
+
+		<article class="gallery-card">
+			<img src="assets/6.png" alt="thinking bou cak">
+			<div class="card-copy"><h2>thinking bou cake</h2><p> 6/21 | the 1 billionth kat fit</p></div>
+		</article>
+
+        <article class="gallery-card">
+			<img src="assets/6.4.png" alt="Gallery image 6.4">
+			<div class="card-copy">
+				<h2>stopsign plays us a song</h2>
+				<p> 6/26 | the moment stopsign revealed his beautiful voice (real)</p>
+			</div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/7.png" alt="kbbq">
+			<div class="card-copy"><h2>kbbq</h2><p> 6/5 | WHO IS THIS GUY? i am afraid. </p></div>
+		</article>
+
+
+        	<article class="gallery-card">
+			<img src="assets/8.png" alt="big deal spot 3">
+			<div class="card-copy"><h2>When Everyone but Brains Dies</h2><p> 4/26 | i grant believe it</p></div>
+		</article>
+
+
+		<article class="gallery-card">
+			<img src="assets/9.png" alt="Do NOT look behind you">
+			<div class="card-copy"><h2>Do NOT look behind you</h2><p> 6/2 | freakvelyn is coming for you</p></div>
+		</article>
+	
+		<article class="gallery-card">
+			<img src="assets/10.png" alt="jesus have i sinned">
+			<div class="card-copy"><h2>jesus have i sinned</h2><p>7/23 | the emoji says it all tbh</p></div>
+		</article>
+
+
+        <article class="gallery-card">
+			<img src="assets/10.5.png" alt="HOW">
+			<div class="card-copy"><h2>HOW</h2><p> 9/8 | You have a lot of hours on this game</p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/11.png" alt="Moshi Moshi?">
+			<div class="card-copy"><h2>Moshi Moshi?</h2><p> 4/26 | Me when I ping the groung chat </p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/12.png" alt="Orphans">
+			<div class="card-copy"><h2>Orphans</h2><p> 8/31 | The entire orphanage was set on fire after this </p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/13.png" alt="AuraFarming">
+			<div class="card-copy"><h2>Aura Farming</h2><p> 8/30 | hello conscriptions head</p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/14.png" alt="incredible flying gear">
+			<div class="card-copy"><h2>incredible flying gear</h2><p> 9/5 | who killed peter griffin</p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/15.png" alt="backrooms">
+			<div class="card-copy"><h2>backrooms</h2><p> 8/2 | why are u guys pulling up to me like the avengers</p></div>
+		</article>
+		<article class="gallery-card">
+			<img src="assets/katme20260606.png" alt="KatNAsh">
+			<div class="card-copy"><h2>Kat & Ash</h2><p>6/6 | happy birthday</p></div>
+		</article>
+	</main>
+</body>
+</html>
